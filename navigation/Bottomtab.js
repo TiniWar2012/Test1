@@ -1,24 +1,22 @@
-import { createStackNavigator } from "@react-navigation/stack";
-import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Baemin from "../screentest/Baemin";
-import Toco from "../screentest/Toco";
-import Home from "../screentest/1Home";
-import Epass from "../screentest/Epass";
-import Epass_main from "../screentest/Epass_main";
+import { NavigationContainer } from "@react-navigation/native";
+import Hung_Home from "./../Screens/Hung_Home";
+import Order from "./../Screens/Order";
+import DM_User from "./../Screens/DM_User";
+import DM_Catalog from "./../Screens/DM_Catalog";
 
 const Tab = createBottomTabNavigator();
-
 function MyTabs() {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Settings" component={SettingsScreen} />
+      <Tab.Screen name="Hung_Home" component={Hung_Home} />
+      <Tab.Screen name="DM_Catalog" component={DM_Catalog} />
+      <Tab.Screen name="Order" component={Order} />
+      <Tab.Screen name="User" component={DM_User} />
     </Tab.Navigator>
   );
 }
-
-const MainNavigator = () => {
+const TabNavigator = () => {
   return (
     <NavigationContainer>
       <MyTabs></MyTabs>
@@ -26,4 +24,4 @@ const MainNavigator = () => {
   );
 };
 
-export default MainNavigator;
+export default TabNavigator;

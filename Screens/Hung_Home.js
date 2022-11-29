@@ -23,12 +23,12 @@ import {
 } from "@expo/vector-icons";
 import "react-native-gesture-handler";
 
-export default class Hung_TrangChu extends Component {
+export default class Hung_Home extends Component {
   render() {
     return (
-      <View>
-        <Text> textInComponent </Text>
-      </View>
+      <SafeAreaView>
+        <ScrollView></ScrollView>
+      </SafeAreaView>
     );
   }
 }
