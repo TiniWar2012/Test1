@@ -11,21 +11,25 @@ import Hung_Home from "./../Screens/Hung_Home";
 import Order from "./../Screens/Order";
 import DM_User from "./../Screens/DM_User";
 import DM_Catalog from "./../Screens/DM_Catalog";
+import Home from "./../screentest/1Home";
+import Baemin from "./../screentest/Baemin";
+import Epass from "./../screentest/Epass";
+import Toco from "./../screentest/Toco";
+import Epass_main from "./../screentest/Epass_main";
 
-// const Stack = createStackNavigator();
+const Stack = createStackNavigator();
 
-// function StackNavigator() {
-//   return (
-//     <Stack.Navigator screenOptions={{ headerShown: false }}>
-//       <Stack.Screen name="Hung_Home" component={Hung_Home} />
-//       <Stack.Screen name="Home" component={Home} />
-//       <Stack.Screen name="Baemin" component={Baemin} />
-//       <Stack.Screen name="Toco" component={Toco} />
-//       <Stack.Screen name="ePass" component={Epass} />
-//       <Stack.Screen name="ePass_main" component={Epass_main} />
-//     </Stack.Navigator>
-//   );
-// }
+function StackNavigator() {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Baemin" component={Baemin} />
+      <Stack.Screen name="Toco" component={Toco} />
+      <Stack.Screen name="ePass" component={Epass} />
+      <Stack.Screen name="ePass_main" component={Epass_main} />
+    </Stack.Navigator>
+  );
+}
 
 const Tab = createBottomTabNavigator();
 function MyTabs() {
