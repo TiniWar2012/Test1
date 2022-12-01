@@ -1,5 +1,17 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
+import {
+  FontAwesome,
+  Feather,
+  SimpleLineIcons,
+  AntDesign,
+  Ionicons,
+  MaterialIcons,
+  EvilIcons,
+  Entypo,
+  Fontisto,
+  FontAwesome5,
+} from "@expo/vector-icons";
 // import Baemin from "../screentest/Baemin";
 // import Toco from "../screentest/Toco";
 // import Home from "../screentest/1Home";
@@ -35,10 +47,38 @@ const Tab = createBottomTabNavigator();
 function MyTabs() {
   return (
     <Tab.Navigator screenOptions={{ headerShown: false }}>
-      <Tab.Screen name="Trang chủ" component={Hung_Home} />
-      <Tab.Screen name="Danh mục" component={DM_Catalog} />
-      <Tab.Screen name="Đơn hàng" component={Order} />
-      <Tab.Screen name="Cá nhân" component={DM_User} />
+      <Tab.Screen
+        name="Trang chủ"
+        component={Hung_Home}
+        options={{
+          tabBarIcon: () => <AntDesign name="home" color={"gray"} size={25} />,
+        }}
+      />
+      <Tab.Screen
+        name="Danh mục"
+        component={DM_Catalog}
+        options={{
+          tabBarIcon: () => (
+            <FontAwesome5 name="pills" color={"gray"} size={25} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Đơn hàng"
+        component={Order}
+        options={{
+          tabBarIcon: () => (
+            <FontAwesome5 name="file-invoice-dollar" color={"gray"} size={25} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Cá nhân"
+        component={DM_User}
+        options={{
+          tabBarIcon: () => <EvilIcons name="user" color={"gray"} size={40} />,
+        }}
+      />
     </Tab.Navigator>
   );
 }
