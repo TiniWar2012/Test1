@@ -28,6 +28,7 @@ import Baemin from "./../screentest/Baemin";
 import Epass from "./../screentest/Epass";
 import Toco from "./../screentest/Toco";
 import Epass_main from "./../screentest/Epass_main";
+import Hung_Map from "./../Screens/Hung_Map";
 
 const Stack = createStackNavigator();
 
@@ -39,6 +40,8 @@ function StackNavigator() {
       <Stack.Screen name="Toco" component={Toco} />
       <Stack.Screen name="ePass" component={Epass} />
       <Stack.Screen name="ePass_main" component={Epass_main} />
+      <Stack.Screen name="Order" component={Order} />
+      <Stack.Screen name="Hung_Map" component={Hung_Map} />
     </Stack.Navigator>
   );
 }
