@@ -74,7 +74,8 @@ export default class Baemin extends Component {
               <Image
                 style={styles.banner}
                 source={{
-                  uri: "https://static.baemin.vn/events/190919_Flashsales_Collection/New_user.jpg",
+                  // uri: "https://static.baemin.vn/events/190919_Flashsales_Collection/New_user.jpg",
+                  uri: "https://data-service.pharmacity.io/pmc-upload-media/production/pmc-ecm-asm/banner122022/wadbanner2pc.webp",
                 }}
               />
             </View>
