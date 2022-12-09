@@ -23,14 +23,13 @@ import {
 } from "@expo/vector-icons";
 import "react-native-gesture-handler";
 
-export default class Hung_Map extends Component {
-  render() {
-    return (
-      <View>
-        <Text> textInComponent </Text>
-      </View>
-    );
-  }
+function Hung_Map() {
+  return (
+    <View>
+      <Text> textInComponent </Text>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({});
+export default Hung_Map;

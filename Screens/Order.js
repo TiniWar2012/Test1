@@ -2,6 +2,7 @@ import React, { Component, useState } from "react";
 import {
   Text,
   StyleSheet,
+  StatusBar,
   View,
   Button,
   TouchableOpacity,
@@ -27,72 +28,70 @@ import Hung_Home from "./Hung_Home";
 import DM_Catalog from "./DM_Catalog";
 import DM_User from "./DM_User";
 import { NavigationContainer } from "@react-navigation/native";
-import { FlatList } from "react-native-gesture-handler";
+import { FlatList, Switch } from "react-native-gesture-handler";
 import { color } from "@rneui/base";
+import { Pressable } from "react-native";
+import { onPress } from "deprecated-react-native-prop-types/DeprecatedTextPropTypes";
+import { Modal } from "react-native-paper";
 // import BouncyCheckbox from "react-native-bouncy-checkbox";
-const Tab = createMaterialTopTabNavigator();
 
-export default class Order extends Component {
-  render() {
-    const renderItem = ({ item }) => <Item {...item} />;
-    return (
-      <SafeAreaView style={styles.container}>
-        <View style={styles.header}>
-          <View style={styles.header_viewtitle}>
-            <Text style={styles.header_title}>Lịch sử đơn hàng</Text>
-          </View>
-          <View>
-            <Ionicons
-              name="md-filter-outline"
-              color={"white"}
-              size={25}
-              style={styles.header_viewiconfilter}
-            />
-          </View>
+export default function Order() {
+  const [Id, setId] = useState(0);
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const renderItem = ({ item }) => <Item {...item} />;
+  return (
+    <SafeAreaView style={styles.container}>
+      <StatusBar show />
+      <View style={styles.header}>
+        <View style={styles.header_viewtitle}>
+          <Text style={styles.header_title}>Lịch sử đơn hàng</Text>
         </View>
-        <View style={styles.body}>
-          {/* Status Invoice */}
-          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-            <View style={styles.navSlideTop}>
-              <Text>Tất cả</Text>
-            </View>
-            <View style={styles.navSlideTop}>
-              <Text>Chờ xác nhận</Text>
-            </View>
-            <View style={styles.navSlideTop}>
-              <Text>Đang xử lý</Text>
-            </View>
-            <View style={styles.navSlideTop}>
-              <Text>Đang giao</Text>
-            </View>
-            <View style={styles.navSlideTop}>
-              <Text>Đã giao thành công</Text>
-            </View>
-            <View style={styles.navSlideTop}>
-              <Text>Đã hủy</Text>
-            </View>
-          </ScrollView>
-          <View style={styles.allOrder}>
-            <View style={styles.search}>
-              <Ionicons name="ios-search-outline" color={"gray"} size={25} />
-              <TextInput placeholder="Nhập tên sản phẩm, nhà thuốc, địa chỉ, mã đơn..." />
-            </View>
-            <Text style={styles.title}>Có 2 kết quả tìm kiếm</Text>
-          </View>
-          <FlatList
-            data={DATA}
-            renderItem={renderItem}
-            keyExtractor={(item) => item.id}
+        <View>
+          <Ionicons
+            name="md-filter-outline"
+            color={"white"}
+            size={25}
+            style={styles.header_viewiconfilter}
           />
         </View>
-      </SafeAreaView>
-    );
-  }
+      </View>
+      <View style={styles.body}>
+        {/* Status Invoice */}
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+          <Pressable
+            style={styles.navSlideTop}
+            onPress={() => {
+              setId(1);
+              setModalVisible(true);
+            }}
+          >
+            <Text>Tất cả</Text>
+          </Pressable>
+          <TouchableOpacity style={styles.navSlideTop}>
+            <Text>Chờ xác nhận</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.navSlideTop} onPress={() => setId(3)}>
+            <Text>Đang xử lý</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.navSlideTop} onPress={() => setId(4)}>
+            <Text>Đang giao</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.navSlideTop} onPress={() => setId(5)}>
+            <Text>Đã giao thành công</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.navSlideTop} onPress={() => setId(6)}>
+            <Text>Đã hủy</Text>
+          </TouchableOpacity>
+        </ScrollView>
+      </View>
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#0F62F9",
+    backgroundColor: "#ffffff",
     flex: 1,
   },
   body: {
@@ -107,11 +106,12 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: "row",
-    paddingTop: 50,
+    paddingTop: 20,
     paddingBottom: 20,
     paddingLeft: 20,
     paddingRight: 20,
     justifyContent: "space-between",
+    backgroundColor: "#0F62F9",
   },
   header_viewiconfilter: {
     marginRight: 10,
@@ -122,10 +122,12 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   navSlideTop: {
-    padding: 13,
-    borderBottomWidth: 2,
-    borderColor: "#003CBF",
-    height: 60,
+    // padding: 10,
+    // borderBottomWidth: 2,
+    // borderColor: "#003CBF",
+    height: 40,
+    justifyContent: "center",
+    marginRight: 20,
   },
   allOrder: {
     backgroundColor: "#ffffff",

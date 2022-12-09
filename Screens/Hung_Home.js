@@ -28,10 +28,12 @@ import Order from "./Order";
 import { style } from "deprecated-react-native-prop-types/DeprecatedImagePropType";
 import { ScrollView } from "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
+import Hung_Map from "./Hung_Map";
+import { NavigationContainer } from "@react-navigation/native";
 
 const Tab = createBottomTabNavigator();
 
-export default function Hung_Home() {
+export default function Hung_Home({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar hidden />
