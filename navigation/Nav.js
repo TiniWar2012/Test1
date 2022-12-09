@@ -35,11 +35,7 @@ const Stack = createStackNavigator();
 function StackNavigator() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Baemin" component={Baemin} />
-      <Stack.Screen name="Toco" component={Toco} />
-      <Stack.Screen name="ePass" component={Epass} />
-      <Stack.Screen name="ePass_main" component={Epass_main} />
+      <Stack.Screen name="Hung_Home" component={Hung_Home} />
       <Stack.Screen name="Order" component={Order} />
       <Stack.Screen name="Hung_Map" component={Hung_Map} />
     </Stack.Navigator>

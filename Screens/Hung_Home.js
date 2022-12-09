@@ -31,7 +31,9 @@ import { StatusBar } from "expo-status-bar";
 
 const Tab = createBottomTabNavigator();
 
-export default function Hung_Home() {
+export default function Hung_Home({ navigation }) {
+  // render() {
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar hidden />
@@ -52,7 +54,7 @@ export default function Hung_Home() {
           />
         </View>
       </View>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.sale}>
           <Image
             style={{ width: "100%", height: 80 }}
@@ -109,19 +111,19 @@ export default function Hung_Home() {
           <Text style={{ fontSize: 20 }}>Danh mục sản phẩm</Text>
           <View style={styles.products}>
             {/* <FlatList
-              horizontal={true}
-              data={DATA4}
-              renderItem={renderItem4}
-              keyExtractor={(item) => item.id}
-              showsHorizontalScrollIndicator={false}
-            />
-            <FlatList
-              horizontal={true}
-              data={DATA4}
-              renderItem={renderItem4}
-              keyExtractor={(item) => item.id}
-              showsHorizontalScrollIndicator={false}
-            /> */}
+                horizontal={true}
+                data={DATA4}
+                renderItem={renderItem4}
+                keyExtractor={(item) => item.id}
+                showsHorizontalScrollIndicator={false}
+              />
+              <FlatList
+                horizontal={true}
+                data={DATA4}
+                renderItem={renderItem4}
+                keyExtractor={(item) => item.id}
+                showsHorizontalScrollIndicator={false}
+              /> */}
             <View style={styles.productdeltails}>
               <TouchableOpacity>
                 <Image
@@ -242,10 +244,37 @@ export default function Hung_Home() {
             />
           </View>
         </View>
+        <View style={styles.monthsale}>
+          <View style={styles.box}>
+            <Text style={styles.font1}>Mua sản phẩm thứ 2 giá 1.000 VNĐ</Text>
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <Text style={{ color: "#003CBF" }}>Xem tất cả</Text>
+              <AntDesign
+                name="right"
+                style={{
+                  fontWeight: "bold",
+                  fontSize: 10,
+                  color: "#003CBF",
+                  paddingLeft: 5,
+                }}
+              />
+            </View>
+          </View>
+          <View style={styles.listsp}>
+            <FlatList
+              horizontal={true}
+              data={DATA6}
+              renderItem={renderItem6}
+              keyExtractor={(item) => item.id}
+              showsHorizontalScrollIndicator={false}
+            />
+          </View>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
 }
+// }
 const DATA1 = [
   {
     id: 1,
@@ -352,10 +381,58 @@ const DATA5 = [
   {
     id: 3,
     discount: "-70%",
-    imgurl: require("../assets/sp1.png"),
-    name: "Viên hỗ trợ khớp Stada ArthroStop Intensive",
-    oldprice: "395.000đ",
-    price: "118.500đ/Hộp",
+    imgurl: require("../assets/sp3.png"),
+    name: "Khẩu trang 3M KF94 9013 màu trắng (Gói 1 cái)",
+    oldprice: "29.400đ",
+    price: "8.820đ/Gói",
+  },
+  {
+    id: 4,
+    discount: "-70%",
+    imgurl: require("../assets/sp4.png"),
+    name: "Khẩu trang 3M KF94 9013 màu đen (Gói 1 cái)",
+    oldprice: "29.400đ",
+    price: "8.820đ/Gói",
+  },
+  {
+    id: 5,
+    discount: "-80%",
+    imgurl: require("../assets/sp5.png"),
+    name: "Kẹo sửa bổ sung canxi Moo Chews vị vani (Gói 18g)",
+    oldprice: "31.500đ",
+    price: "9.450đ/Gói",
+  },
+];
+const DATA6 = [
+  {
+    id: 1,
+    imgurl: require("../assets/sp6.png"),
+    name: "Thực phẩm bảo vệ sức khỏe bổ sung vitamin E Bioco Huvit E4 (Hộp 60 viên)",
+    price: "205.500 đ/Hộp",
+  },
+  {
+    id: 2,
+    name: "Khẩu trang 3M KF94 9013 màu trắng (Gói 1 cái)",
+    imgurl: require("../assets/sp7.png"),
+    price: "63.000 đ/Hộp",
+  },
+  {
+    id: 3,
+    imgurl: require("../assets/sp8.png"),
+    name: "Khẩu trang 3M KF94 9013 màu trắng (Gói 1 cái)",
+    price: "8.820 đ/Gói",
+  },
+  {
+    id: 4,
+    imgurl: require("../assets/sp9.png"),
+    name: "Khẩu trang 3M KF94 9013 màu đen (Gói 1 cái)",
+    price: "8.820 đ/Gói",
+  },
+  {
+    id: 5,
+    imgurl: require("../assets/sp10.png"),
+    name: "Kẹo sửa bổ sung canxi Moo Chews vị vani (Gói 18g)",
+    price: "9.450 đ/Gói",
   },
 ];
 const renderItem1 = ({ item }) => (
@@ -409,7 +486,27 @@ const renderItem5 = ({ item }) => (
       <Text style={styles.font2}>{item.oldprice}</Text>
       <Text style={styles.font3}>{item.price}</Text>
       <View style={styles.btnadd}>
-        <TouchableOpacity style={styles.btnadd}>
+        <TouchableOpacity>
+          <Text style={styles.font4}>Thêm vào giỏ hàng</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  </TouchableOpacity>
+);
+const renderItem6 = ({ item }) => (
+  <TouchableOpacity style={styles.row}>
+    <View style={styles.prdcontent}>
+      <View style={{ paddingVertical: 10 }}>
+        <Image style={styles.imgsp} source={item.imgurl} />
+      </View>
+      <Text numberOfLines={2} ellipsizeMode="tail" style={{ fontSize: 11 }}>
+        {item.name}
+      </Text>
+      <View style={{ paddingVertical: 10 }}>
+        <Text style={styles.font3}>{item.price}</Text>
+      </View>
+      <View style={styles.btnadd}>
+        <TouchableOpacity>
           <Text style={styles.font4}>Thêm vào giỏ hàng</Text>
         </TouchableOpacity>
       </View>
@@ -535,7 +632,7 @@ const styles = StyleSheet.create({
   },
   row: {
     borderWidth: 1,
-    borderColor: "gray",
+    borderColor: "lightgrey",
     borderRadius: 10,
     width: 160,
     flexDirection: "column",
@@ -545,6 +642,7 @@ const styles = StyleSheet.create({
   },
   font1: {
     fontSize: 15,
+    fontWeight: "500",
   },
   font2: {
     textDecorationLine: "line-through",
@@ -566,7 +664,8 @@ const styles = StyleSheet.create({
     borderColor: "#5DAC46",
     backgroundColor: "#5DAC46",
     borderRadius: 5,
-    paddingVertical: 2,
+    marginVertical: 3,
+    paddingVertical: 5,
   },
   prdcontent: {},
 });
