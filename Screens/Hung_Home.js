@@ -138,10 +138,12 @@ export default function Hung_Home({ navigation }) {
             name="bell"
             style={{ fontSize: 20, color: "white" }}
           />
-          <Feather
-            name="shopping-cart"
-            style={{ fontSize: 20, color: "white" }}
-          />
+          <TouchableOpacity onPress={() => navigation.navigate("DM_Cart")}>
+            <Feather
+              name="shopping-cart"
+              style={{ fontSize: 20, color: "white" }}
+            />
+          </TouchableOpacity>
         </View>
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
