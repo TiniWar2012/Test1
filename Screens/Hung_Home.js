@@ -28,12 +28,102 @@ import Order from "./Order";
 import { style } from "deprecated-react-native-prop-types/DeprecatedImagePropType";
 import { ScrollView } from "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
+import Hung_Map from "./Hung_Map";
+import { NavigationContainer } from "@react-navigation/native";
 
 const Tab = createBottomTabNavigator();
-
 export default function Hung_Home({ navigation }) {
-  // render() {
-
+  const renderItem1 = ({ item }) => (
+    <View>
+      <Image style={styles.sizeimg} source={item.imgurl} />
+    </View>
+  );
+  const renderItem2 = ({ item }) => (
+    <TouchableOpacity>
+      <View style={styles.boxicon}>
+        <Image style={styles.sizeicons} source={item.iconurl} />
+        <Text style={styles.texticon}>{item.name}</Text>
+      </View>
+    </TouchableOpacity>
+  );
+  const renderItem3 = ({ item }) => (
+    <TouchableOpacity>
+      <View style={styles.boxicon}>
+        <Image style={styles.sizeicons} source={item.iconurl} />
+        <Text style={styles.texticon}>{item.name}</Text>
+      </View>
+    </TouchableOpacity>
+  );
+  const renderItem4 = ({ item }) => (
+    <TouchableOpacity>
+      <View style={styles.boxprd}>
+        <Image style={styles.productimg} source={item.prdimg} />
+        <Text style={styles.texticon}>{item.name}</Text>
+      </View>
+    </TouchableOpacity>
+  );
+  const renderItem5 = ({ item }) => (
+    <TouchableOpacity
+      style={styles.row}
+      onPress={() => navigation.navigate("Hung_ProductDetail")}
+    >
+      <View style={styles.dsc}>
+        <Text
+          style={{
+            color: "white",
+            borderRadius: 50,
+            backgroundColor: "red",
+            paddingHorizontal: 10,
+          }}
+        >
+          {item.discount}
+        </Text>
+      </View>
+      <View style={styles.prdcontent}>
+        <Image style={styles.imgsp} source={item.imgurl} />
+        <Text numberOfLines={2} ellipsizeMode="tail">
+          {item.name}
+        </Text>
+        <Text style={styles.font2}>{item.oldprice}</Text>
+        <Text style={styles.font3}>{item.price}</Text>
+        <View style={styles.btnadd}>
+          <TouchableOpacity>
+            <Text style={styles.font4}>Thêm vào giỏ hàng</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </TouchableOpacity>
+  );
+  const renderItem6 = ({ item }) => (
+    <TouchableOpacity
+      style={styles.row}
+      onPress={() => navigation.navigate("Hung_ProductDetail")}
+    >
+      <View style={styles.prdcontent}>
+        <View style={{ paddingVertical: 10 }}>
+          <Image style={styles.imgsp} source={item.imgurl} />
+        </View>
+        <Text numberOfLines={2} ellipsizeMode="tail" style={{ fontSize: 11 }}>
+          {item.name}
+        </Text>
+        <View style={{ paddingVertical: 10 }}>
+          <Text style={styles.font3}>{item.price}</Text>
+        </View>
+        <View style={styles.btnadd}>
+          <TouchableOpacity>
+            <Text style={styles.font4}>Thêm vào giỏ hàng</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </TouchableOpacity>
+  );
+  const renderItem7 = ({ item }) => (
+    <TouchableOpacity style={styles.row1}>
+      <View>
+        <Image style={styles.logostore} source={item.imgurl} />
+      </View>
+    </TouchableOpacity>
+  );
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar hidden />
@@ -270,6 +360,167 @@ export default function Hung_Home({ navigation }) {
             />
           </View>
         </View>
+        <View style={styles.monthsale}>
+          <View style={styles.box}>
+            <Text style={styles.font1}>
+              Deal sốc mua 2 tặng 4 - chỉ từ 23.000Đ/bộ
+            </Text>
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <Text style={{ color: "#003CBF" }}>Xem tất cả</Text>
+              <AntDesign
+                name="right"
+                style={{
+                  fontWeight: "bold",
+                  fontSize: 10,
+                  color: "#003CBF",
+                  paddingLeft: 5,
+                }}
+              />
+            </View>
+          </View>
+          <View style={styles.listsp}>
+            <FlatList
+              horizontal={true}
+              data={DATA7}
+              renderItem={renderItem6}
+              keyExtractor={(item) => item.id}
+              showsHorizontalScrollIndicator={false}
+            />
+          </View>
+        </View>
+        <View style={styles.monthsale}>
+          <View style={styles.box}>
+            <Text style={styles.font1}>Sản phẩm bán chạy</Text>
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <Text style={{ color: "#003CBF" }}>Xem tất cả</Text>
+              <AntDesign
+                name="right"
+                style={{
+                  fontWeight: "bold",
+                  fontSize: 10,
+                  color: "#003CBF",
+                  paddingLeft: 5,
+                }}
+              />
+            </View>
+          </View>
+          <View style={styles.listsp}>
+            <FlatList
+              horizontal={true}
+              data={DATA8}
+              renderItem={renderItem6}
+              keyExtractor={(item) => item.id}
+              showsHorizontalScrollIndicator={false}
+            />
+          </View>
+        </View>
+        <View style={styles.monthsale}>
+          <View style={styles.box}>
+            <Text style={styles.font1}>Sản phẩm bán chạy</Text>
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <Text style={{ color: "#003CBF" }}>Xem tất cả</Text>
+              <AntDesign
+                name="right"
+                style={{
+                  fontWeight: "bold",
+                  fontSize: 10,
+                  color: "#003CBF",
+                  paddingLeft: 5,
+                }}
+              />
+            </View>
+          </View>
+          <View style={styles.listsp}>
+            <FlatList
+              horizontal={true}
+              data={DATA9}
+              renderItem={renderItem6}
+              keyExtractor={(item) => item.id}
+              showsHorizontalScrollIndicator={false}
+            />
+          </View>
+        </View>
+        <View style={styles.monthsale}>
+          <View style={styles.box}>
+            <Text style={styles.font1}>Thương hiệu nổi bật</Text>
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <Text style={{ color: "#003CBF" }}>Xem tất cả</Text>
+              <AntDesign
+                name="right"
+                style={{
+                  fontWeight: "bold",
+                  fontSize: 10,
+                  color: "#003CBF",
+                  paddingLeft: 5,
+                }}
+              />
+            </View>
+          </View>
+          <View style={styles.listsp}>
+            <FlatList
+              horizontal={true}
+              data={DATA10}
+              renderItem={renderItem7}
+              keyExtractor={(item) => item.id}
+              showsHorizontalScrollIndicator={false}
+            />
+          </View>
+        </View>
+        <View style={styles.footer}>
+          <View style={styles.box1}>
+            <Image
+              style={styles.sizeboximg}
+              source={require("../assets/logo6.png")}
+            />
+            <View style={{ marginTop: 20 }}>
+              <Text style={styles.font5}>Miễn phí vận chuyển</Text>
+            </View>
+            <View>
+              <Text style={styles.font6}>
+                Áp dụng cho đơn hàng từ 300.000 đ
+              </Text>
+            </View>
+          </View>
+          <View style={styles.box1}>
+            <Image
+              style={styles.sizeboximg}
+              source={require("../assets/logo7.png")}
+            />
+            <View style={{ marginTop: 20 }}>
+              <Text style={styles.font5}>Thuốc tốt giá rẻ</Text>
+            </View>
+
+            <Text style={styles.font6}>Nếu không rẻ, Hoàn tiền chênh lệch</Text>
+          </View>
+        </View>
+        <View style={styles.footer}>
+          <View style={styles.box1}>
+            <Image
+              style={styles.sizeboximg}
+              source={require("../assets/logo8.png")}
+            />
+            <View style={{ marginTop: 20 }}>
+              <Text style={styles.font5}>Nhà thuốc gần bạn</Text>
+            </View>
+
+            <Text style={styles.font6}>
+              Tìm ngay nhà thuốc gần nơi bạn sống và ghé thăm
+            </Text>
+          </View>
+          <View style={styles.box1}>
+            <Image
+              style={styles.sizeboximg}
+              source={require("../assets/logo9.png")}
+            />
+            <View style={{ marginTop: 20 }}>
+              <Text style={styles.font5}>Tích lũy điểm</Text>
+            </View>
+
+            <Text style={styles.font6}>
+              Tích lũy điểm thưởng và sử dụng điểm cho giao dịch
+            </Text>
+          </View>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -412,113 +663,160 @@ const DATA6 = [
   },
   {
     id: 2,
-    name: "Khẩu trang 3M KF94 9013 màu trắng (Gói 1 cái)",
+    name: "Thực phẩm bảo vệ sức khỏe giúp giải độc gan BioCo Simarin Extra (Hộp 20 viên x 4 vỉ)",
     imgurl: require("../assets/sp7.png"),
-    price: "63.000 đ/Hộp",
+    price: "506.000 đ/Hộp",
   },
   {
     id: 3,
     imgurl: require("../assets/sp8.png"),
-    name: "Khẩu trang 3M KF94 9013 màu trắng (Gói 1 cái)",
-    price: "8.820 đ/Gói",
+    name: "Thực phẩm bảo vệ sức khỏe PROANTIOBIOPLUS",
+    price: "480.000 đ/Hộp",
   },
   {
     id: 4,
     imgurl: require("../assets/sp9.png"),
-    name: "Khẩu trang 3M KF94 9013 màu đen (Gói 1 cái)",
-    price: "8.820 đ/Gói",
+    name: "Bao cao su Pharmacity Easy Fit (10 cái/hộp)",
+    price: "87.000 đ/Hộp",
   },
   {
     id: 5,
     imgurl: require("../assets/sp10.png"),
-    name: "Kẹo sửa bổ sung canxi Moo Chews vị vani (Gói 18g)",
-    price: "9.450 đ/Gói",
+    name: "Bao cao su gai lạnh Pharmacity Dot &amp; Cool (3 cái/hộp)",
+    price: "53.000 đ/Hộp",
   },
 ];
-const renderItem1 = ({ item }) => (
-  <View>
-    <Image style={styles.sizeimg} source={item.imgurl} />
-  </View>
-);
-const renderItem2 = ({ item }) => (
-  <TouchableOpacity>
-    <View style={styles.boxicon}>
-      <Image style={styles.sizeicons} source={item.iconurl} />
-      <Text style={styles.texticon}>{item.name}</Text>
-    </View>
-  </TouchableOpacity>
-);
-const renderItem3 = ({ item }) => (
-  <TouchableOpacity>
-    <View style={styles.boxicon}>
-      <Image style={styles.sizeicons} source={item.iconurl} />
-      <Text style={styles.texticon}>{item.name}</Text>
-    </View>
-  </TouchableOpacity>
-);
-const renderItem4 = ({ item }) => (
-  <TouchableOpacity>
-    <View style={styles.boxprd}>
-      <Image style={styles.productimg} source={item.prdimg} />
-      <Text style={styles.texticon}>{item.name}</Text>
-    </View>
-  </TouchableOpacity>
-);
-const renderItem5 = ({ item }) => (
-  <TouchableOpacity style={styles.row}>
-    <View style={styles.dsc}>
-      <Text
-        style={{
-          color: "white",
-          borderRadius: 50,
-          backgroundColor: "red",
-          paddingHorizontal: 10,
-        }}
-      >
-        {item.discount}
-      </Text>
-    </View>
-    <View style={styles.prdcontent}>
-      <Image style={styles.imgsp} source={item.imgurl} />
-      <Text numberOfLines={2} ellipsizeMode="tail">
-        {item.name}
-      </Text>
-      <Text style={styles.font2}>{item.oldprice}</Text>
-      <Text style={styles.font3}>{item.price}</Text>
-      <View style={styles.btnadd}>
-        <TouchableOpacity>
-          <Text style={styles.font4}>Thêm vào giỏ hàng</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-  </TouchableOpacity>
-);
-const renderItem6 = ({ item }) => (
-  <TouchableOpacity style={styles.row}>
-    <View style={styles.prdcontent}>
-      <View style={{ paddingVertical: 10 }}>
-        <Image style={styles.imgsp} source={item.imgurl} />
-      </View>
-      <Text numberOfLines={2} ellipsizeMode="tail" style={{ fontSize: 11 }}>
-        {item.name}
-      </Text>
-      <View style={{ paddingVertical: 10 }}>
-        <Text style={styles.font3}>{item.price}</Text>
-      </View>
-      <View style={styles.btnadd}>
-        <TouchableOpacity>
-          <Text style={styles.font4}>Thêm vào giỏ hàng</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-  </TouchableOpacity>
-);
+const DATA7 = [
+  {
+    id: 1,
+    imgurl: require("../assets/sp11.jpg"),
+    name: "Bộ xét nghiệm nhanh COVID-19 tại nhà Humasis COVID-19 Ag Home Test Kit",
+    price: "89.000 đ/Bộ",
+  },
+  {
+    id: 2,
+    name: "Bộ xét nghiệm nhanh COVID-19 tại nhà Humasis COVID-19 Ag Home Test Kit (Hộp 5 kit)",
+    imgurl: require("../assets/sp12.jpg"),
+    price: "445.000 đ/Hộp",
+  },
+  {
+    id: 3,
+    imgurl: require("../assets/sp13.jpg"),
+    name: "Bộ xét nghiệm nhanh nước bọt Covid-19 Antigen Rapid Test Kit (Saliva) ",
+    price: "69.000 đ/Bộ",
+  },
+  {
+    id: 4,
+    imgurl: require("../assets/sp14.jpg"),
+    name: "Bộ xét nghiệm nhanh kháng nguyên SARS-CoV-2 SureScreen Diagnostics Covid-19 Test Kit ",
+    price: "80.000 đ/Bộ",
+  },
+  {
+    id: 5,
+    imgurl: require("../assets/sp15.jpg"),
+    name: "Bộ xét nghiệm nhanh Covid-19 Antigen Self-Test Abbott Panbio Test Kit ",
+    price: "81.900 đ/Bộ",
+  },
+];
+const DATA8 = [
+  {
+    id: 1,
+    imgurl: require("../assets/sp16.png"),
+    name: "Sữa bột dinh dưỡng cho trẻ biếng ăn Abbott Pediasure BA (850g)",
+    price: "570.000 đ/Lon",
+  },
+  {
+    id: 2,
+    name: "Betadine Throat Spray 0.45% (chai 50ml)",
+    imgurl: require("../assets/sp17.png"),
+    price: "62.000 đ/Chai",
+  },
+  {
+    id: 3,
+    imgurl: require("../assets/sp18.png"),
+    name: "Dầu gió xanh Con Ó Eagle Brand Medicated Oil (Chai 24ml) ",
+    price: "80.000 đ/Chai",
+  },
+  {
+    id: 4,
+    imgurl: require("../assets/sp14.jpg"),
+    name: "Bộ xét nghiệm nhanh kháng nguyên SARS-CoV-2 SureScreen Diagnostics Covid-19 Test Kit ",
+    price: "80.000 đ/Bộ",
+  },
+  {
+    id: 5,
+    imgurl: require("../assets/sp20.jpg"),
+    name: "Berocca Performance Orange (Hộp 12 vỉ x 2 viên) ",
+    price: "196.800 đ/Hộp",
+  },
+];
+const DATA9 = [
+  {
+    id: 1,
+    imgurl: require("../assets/sp21.jpg"),
+    name: "Bộ sản phẩm size nhỏ du lịch Pharmacist Formulators Sữa rửa mặt dưỡng ẩm- Kem dưỡng ẩm chống nắng - Serum dưỡng ẩm",
+    price: "845.000 đ/Bộ",
+  },
+  {
+    id: 2,
+    name: "Telfast BD 60mg (Hộp 3 vỉ x 10 viên)",
+    imgurl: require("../assets/sp22.jpg"),
+    price: "120.000 đ/Hộp",
+  },
+  {
+    id: 3,
+    imgurl: require("../assets/sp23.jpg"),
+    name: "Tinh chất Vitamin C Pharmacist Formulators (Chai 20ml) ",
+    price: "565.000 đ/Chai",
+  },
+  {
+    id: 4,
+    imgurl: require("../assets/sp24.png"),
+    name: "Toner và tinh chất dưỡng ẩm Pharmacist Formulators 2in1 Moisturising Toner and Essence (Chai 200ml)",
+    price: "375.000 đ/Chai",
+  },
+  {
+    id: 5,
+    imgurl: require("../assets/sp25.jpg"),
+    name: "Nizoral 2% (Hộp 1 chai nhựa x 50ml) ",
+    price: "55.000 đ/Hộp",
+  },
+];
+const DATA10 = [
+  {
+    id: 1,
+    imgurl: require("../assets/logo1.png"),
+    name: "Pharmacity",
+  },
+  {
+    id: 2,
+    name: "Nutrigen",
+    imgurl: require("../assets/logo2.png"),
+  },
+  {
+    id: 3,
+    imgurl: require("../assets/logo3.png"),
+    name: "Inno.N ",
+  },
+  {
+    id: 4,
+    imgurl: require("../assets/logo4.png"),
+    name: "Goodlife",
+  },
+  {
+    id: 5,
+    imgurl: require("../assets/logo5.png"),
+    name: "CJ",
+  },
+];
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "white",
   },
-  maps: {},
+  maps: {
+    marginVertical: 10,
+  },
   map: {
     flexDirection: "row",
     alignItems: "center",
@@ -528,8 +826,8 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 50,
     borderTopLeftRadius: 30,
     borderBottomLeftRadius: 15,
-    backgroundColor: "blue",
-    borderColor: "blue",
+    backgroundColor: "#0F62F9",
+    borderColor: "#0F62F9",
     margin: 5,
   },
   map_left: {
@@ -542,6 +840,9 @@ const styles = StyleSheet.create({
   biggerText: {
     fontSize: 20,
     color: "white",
+  },
+  adv: {
+    width: "99%",
   },
   sizeimg: {
     borderRadius: 10,
@@ -613,7 +914,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   monthsale: {
-    paddingTop: 10,
+    paddingVertical: 10,
     marginHorizontal: 15,
   },
   box: {
@@ -643,6 +944,7 @@ const styles = StyleSheet.create({
   font1: {
     fontSize: 15,
     fontWeight: "500",
+    maxWidth: "70%",
   },
   font2: {
     textDecorationLine: "line-through",
@@ -667,5 +969,41 @@ const styles = StyleSheet.create({
     marginVertical: 3,
     paddingVertical: 5,
   },
-  prdcontent: {},
+  row1: {
+    width: 90,
+    height: 90,
+    borderWidth: 1,
+    borderColor: "lightgrey",
+    borderRadius: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: 15,
+    marginTop: 10,
+  },
+  logostore: {
+    width: 70,
+    height: 70,
+  },
+  box1: {
+    alignItems: "center",
+    width: "50%",
+  },
+  sizeboximg: {
+    width: 55,
+    height: 55,
+  },
+  font5: {
+    textTransform: "uppercase",
+    color: "#0F62F9",
+  },
+  font6: {
+    color: "lightgray",
+    textAlign: "center",
+  },
+  footer: {
+    marginVertical: 5,
+    marginHorizontal: 15,
+    display: "flex",
+    flexDirection: "row",
+  },
 });

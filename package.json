@@ -28,6 +28,7 @@
     "react-native-check-box": "^2.1.7",
     "react-native-gesture-handler": "^2.5.0",
     "react-native-icon-checkbox": "^1.2.0",
+    "react-native-image-slider-box": "^2.0.7",
     "react-native-linear-gradient": "^2.6.2",
     "react-native-pager-view": "5.4.24",
     "react-native-paper": "^4.12.5",
