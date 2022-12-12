@@ -25,7 +25,7 @@ import {
 } from "@expo/vector-icons";
 import "react-native-gesture-handler";
 
-function DM_Catalog() {
+export default function DM_Catalog({ navigation }) {
   const [catalog, setCatalog] = useState("");
   const [detailList, setDetailList] = useState(detailCatalog);
   const setCatalogFilter = (catalog) => {
@@ -65,9 +65,12 @@ function DM_Catalog() {
             placeholder="Tìm trên Phamarcity"
           />
         </View>
-        <View style={styles.cart}>
+        <TouchableOpacity
+          style={styles.cart}
+          onPress={() => navigation.navigate("DM_Cart")}
+        >
           <Ionicons name="ios-cart-outline" size={30} color={"white"} />
-        </View>
+        </TouchableOpacity>
       </View>
       <View style={styles.body}>
         <View style={styles.CatalogList}>
@@ -108,7 +111,6 @@ function DM_Catalog() {
     </SafeAreaView>
   );
 }
-export default DM_Catalog;
 
 const styles = StyleSheet.create({
   container: {
