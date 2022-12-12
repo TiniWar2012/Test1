@@ -38,7 +38,12 @@ export default function Hung_ProductDetail({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.navbar}>
-        <TouchableOpacity onPress={() => navigation.navigate("Hung_Home")}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("Hung_Home");
+            navigation.navigate("MyTabs");
+          }}
+        >
           <AntDesign name="arrowleft" size={25} />
         </TouchableOpacity>
         <View>
@@ -98,7 +103,10 @@ export default function Hung_ProductDetail({ navigation }) {
             <Text style={{ color: "green" }}> 21.000 </Text>
             điểm thành viên
           </Text>
-          <TouchableOpacity style={styles.searchshop}>
+          <TouchableOpacity
+            style={styles.searchshop}
+            onPress={() => navigation.navigate("Hung_Map")}
+          >
             <Entypo name="shop" size={15} color="#0f62f9" />
             <Text
               style={{
@@ -209,12 +217,18 @@ export default function Hung_ProductDetail({ navigation }) {
         <Separator />
       </ScrollView>
       <View style={styles.btn}>
-        <TouchableOpacity style={styles.purchase}>
+        <TouchableOpacity
+          style={styles.purchase}
+          onPress={() => navigation.navigate("DM_Cart")}
+        >
           <Text style={{ textAlign: "center", color: "#0f62f9" }}>
             Mua ngay
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.order}>
+        <TouchableOpacity
+          style={styles.order}
+          onPress={() => navigation.navigate("DM_Cart")}
+        >
           <Ionicons name="cart-outline" size={20} color={"white"} />
           <Text
             style={{

@@ -94,12 +94,14 @@ export default function Hung_Map({ navigation }) {
       </View>
       <View style={styles.box1}>
         <Text>Tìm địa chỉ nhà thuốc Pharmacity</Text>
-        <View style={styles.choose}>
+        <TouchableOpacity style={styles.choose}>
           <Text style={{ color: "lightgrey" }}>Chọn khu vực</Text>
           <AntDesign name="down" size={20} />
-        </View>
+        </TouchableOpacity>
         <Separator />
-        <Text style={{ color: "grey" }}>Bấm để thay đổi khu vực</Text>
+        <TouchableOpacity>
+          <Text style={{ color: "grey" }}>Bấm để thay đổi khu vực</Text>
+        </TouchableOpacity>
       </View>
       <View style={styles.body}>
         <FlatList
@@ -232,6 +234,66 @@ const DATA1 = [
     time: "06:00:00 - 23:30:00",
     house: "DNPMC1390",
   },
+  {
+    id: 11,
+    name: "01 Nguyễn Thái Học, Gia Lai",
+    icon1: <EvilIcons name="heart" size={20} />,
+    icon2: <SimpleLineIcons name="location-pin" size={20} />,
+    icon3: <AntDesign name="clockcircleo" size={20} />,
+    icon4: <MaterialCommunityIcons name="home-minus-outline" size={20} />,
+    location:
+      "01 Nguyễn Thái Học, Phường Hội Thương, Thành phố Pleiku, Tỉnh Gia Lai",
+    time: "06:00:00 - 23:30:00",
+    house: "DNPMC1390",
+  },
+  {
+    id: 12,
+    name: "01 Nguyễn Thái Học, Gia Lai",
+    icon1: <EvilIcons name="heart" size={20} />,
+    icon2: <SimpleLineIcons name="location-pin" size={20} />,
+    icon3: <AntDesign name="clockcircleo" size={20} />,
+    icon4: <MaterialCommunityIcons name="home-minus-outline" size={20} />,
+    location:
+      "01 Nguyễn Thái Học, Phường Hội Thương, Thành phố Pleiku, Tỉnh Gia Lai",
+    time: "06:00:00 - 23:30:00",
+    house: "DNPMC1390",
+  },
+  {
+    id: 13,
+    name: "01 Nguyễn Thái Học, Gia Lai",
+    icon1: <EvilIcons name="heart" size={20} />,
+    icon2: <SimpleLineIcons name="location-pin" size={20} />,
+    icon3: <AntDesign name="clockcircleo" size={20} />,
+    icon4: <MaterialCommunityIcons name="home-minus-outline" size={20} />,
+    location:
+      "01 Nguyễn Thái Học, Phường Hội Thương, Thành phố Pleiku, Tỉnh Gia Lai",
+    time: "06:00:00 - 23:30:00",
+    house: "DNPMC1390",
+  },
+  {
+    id: 14,
+    name: "01 Nguyễn Thái Học, Gia Lai",
+    icon1: <EvilIcons name="heart" size={20} />,
+    icon2: <SimpleLineIcons name="location-pin" size={20} />,
+    icon3: <AntDesign name="clockcircleo" size={20} />,
+    icon4: <MaterialCommunityIcons name="home-minus-outline" size={20} />,
+    location:
+      "01 Nguyễn Thái Học, Phường Hội Thương, Thành phố Pleiku, Tỉnh Gia Lai",
+    time: "06:00:00 - 23:30:00",
+    house: "DNPMC1390",
+  },
+  {
+    id: 15,
+    name: "01 Nguyễn Thái Học, Gia Lai",
+    icon1: <EvilIcons name="heart" size={20} />,
+    icon2: <SimpleLineIcons name="location-pin" size={20} />,
+    icon3: <AntDesign name="clockcircleo" size={20} />,
+    icon4: <MaterialCommunityIcons name="home-minus-outline" size={20} />,
+    location:
+      "01 Nguyễn Thái Học, Phường Hội Thương, Thành phố Pleiku, Tỉnh Gia Lai",
+    time: "06:00:00 - 23:30:00",
+    house: "DNPMC1390",
+  },
 ];
 const renderItem1 = ({ item }) => (
   <View style={styles.box}>
@@ -352,5 +414,6 @@ const styles = StyleSheet.create({
   },
   body: {
     marginTop: 150,
+    marginBottom: 110,
   },
 });

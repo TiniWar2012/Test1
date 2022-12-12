@@ -39,7 +39,7 @@ export default function Hung_Home({ navigation }) {
     </View>
   );
   const renderItem2 = ({ item }) => (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => navigation.navigate("DM_User")}>
       <View style={styles.boxicon}>
         <Image style={styles.sizeicons} source={item.iconurl} />
         <Text style={styles.texticon}>{item.name}</Text>
@@ -47,7 +47,7 @@ export default function Hung_Home({ navigation }) {
     </TouchableOpacity>
   );
   const renderItem3 = ({ item }) => (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => navigation.navigate("DM_User")}>
       <View style={styles.boxicon}>
         <Image style={styles.sizeicons} source={item.iconurl} />
         <Text style={styles.texticon}>{item.name}</Text>
@@ -134,10 +134,12 @@ export default function Hung_Home({ navigation }) {
             source={require("../assets/vietnam.png")}
           />
           <TextInput style={styles.input} placeholder="Tìm trên Pharmacity" />
-          <SimpleLineIcons
-            name="bell"
-            style={{ fontSize: 20, color: "white" }}
-          />
+          <TouchableOpacity onPress={() => navigation.navigate("Order")}>
+            <SimpleLineIcons
+              name="bell"
+              style={{ fontSize: 20, color: "white" }}
+            />
+          </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate("DM_Cart")}>
             <Feather
               name="shopping-cart"
@@ -217,7 +219,9 @@ export default function Hung_Home({ navigation }) {
                 showsHorizontalScrollIndicator={false}
               /> */}
             <View style={styles.productdeltails}>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("DM_Catalog")}
+              >
                 <Image
                   style={styles.productimg}
                   source={require("../assets/duocpham.png")}
@@ -226,7 +230,9 @@ export default function Hung_Home({ navigation }) {
               </TouchableOpacity>
             </View>
             <View style={styles.productdeltails}>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("DM_Catalog")}
+              >
                 <Image
                   style={styles.productimg}
                   source={require("../assets/cssk.png")}
@@ -235,7 +241,9 @@ export default function Hung_Home({ navigation }) {
               </TouchableOpacity>
             </View>
             <View style={styles.productdeltails}>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("DM_Catalog")}
+              >
                 <Image
                   style={styles.productimg}
                   source={require("../assets/cscn.png")}
@@ -244,7 +252,9 @@ export default function Hung_Home({ navigation }) {
               </TouchableOpacity>
             </View>
             <View style={styles.productdeltails}>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("DM_Catalog")}
+              >
                 <Image
                   style={styles.productimg}
                   source={require("../assets/sptl.png")}
@@ -256,7 +266,9 @@ export default function Hung_Home({ navigation }) {
 
           <View style={styles.products}>
             <View style={styles.productdeltails}>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("DM_Catalog")}
+              >
                 <Image
                   style={styles.productimg}
                   source={require("../assets/tpcn.png")}
@@ -265,7 +277,9 @@ export default function Hung_Home({ navigation }) {
               </TouchableOpacity>
             </View>
             <View style={styles.productdeltails}>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("DM_Catalog")}
+              >
                 <Image
                   style={styles.productimg}
                   source={require("../assets/tbyt.png")}
@@ -274,7 +288,9 @@ export default function Hung_Home({ navigation }) {
               </TouchableOpacity>
             </View>
             <View style={styles.productdeltails}>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("DM_Catalog")}
+              >
                 <Image
                   style={styles.productimg}
                   source={require("../assets/cssd.png")}
@@ -283,7 +299,9 @@ export default function Hung_Home({ navigation }) {
               </TouchableOpacity>
             </View>
             <View style={styles.productdeltails}>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("DM_Catalog")}
+              >
                 <Image
                   style={styles.productimg}
                   source={require("../assets/tbyt.png")}
@@ -313,7 +331,10 @@ export default function Hung_Home({ navigation }) {
         <View style={styles.monthsale}>
           <View style={styles.box}>
             <Text style={styles.font1}>Tháng ưu đãi giảm đến 80%</Text>
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("DM_Catalog")}
+              style={{ flexDirection: "row", alignItems: "center" }}
+            >
               <Text style={{ color: "#003CBF" }}>Xem tất cả</Text>
               <AntDesign
                 name="right"
@@ -324,7 +345,7 @@ export default function Hung_Home({ navigation }) {
                   paddingLeft: 5,
                 }}
               />
-            </View>
+            </TouchableOpacity>
           </View>
           <View style={styles.listsp}>
             <FlatList
@@ -339,7 +360,10 @@ export default function Hung_Home({ navigation }) {
         <View style={styles.monthsale}>
           <View style={styles.box}>
             <Text style={styles.font1}>Mua sản phẩm thứ 2 giá 1.000 VNĐ</Text>
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("DM_Catalog")}
+              style={{ flexDirection: "row", alignItems: "center" }}
+            >
               <Text style={{ color: "#003CBF" }}>Xem tất cả</Text>
               <AntDesign
                 name="right"
@@ -350,7 +374,7 @@ export default function Hung_Home({ navigation }) {
                   paddingLeft: 5,
                 }}
               />
-            </View>
+            </TouchableOpacity>
           </View>
           <View style={styles.listsp}>
             <FlatList
@@ -367,7 +391,10 @@ export default function Hung_Home({ navigation }) {
             <Text style={styles.font1}>
               Deal sốc mua 2 tặng 4 - chỉ từ 23.000Đ/bộ
             </Text>
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("DM_Catalog")}
+              style={{ flexDirection: "row", alignItems: "center" }}
+            >
               <Text style={{ color: "#003CBF" }}>Xem tất cả</Text>
               <AntDesign
                 name="right"
@@ -378,7 +405,7 @@ export default function Hung_Home({ navigation }) {
                   paddingLeft: 5,
                 }}
               />
-            </View>
+            </TouchableOpacity>
           </View>
           <View style={styles.listsp}>
             <FlatList
@@ -393,7 +420,10 @@ export default function Hung_Home({ navigation }) {
         <View style={styles.monthsale}>
           <View style={styles.box}>
             <Text style={styles.font1}>Sản phẩm bán chạy</Text>
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("DM_Catalog")}
+              style={{ flexDirection: "row", alignItems: "center" }}
+            >
               <Text style={{ color: "#003CBF" }}>Xem tất cả</Text>
               <AntDesign
                 name="right"
@@ -404,7 +434,7 @@ export default function Hung_Home({ navigation }) {
                   paddingLeft: 5,
                 }}
               />
-            </View>
+            </TouchableOpacity>
           </View>
           <View style={styles.listsp}>
             <FlatList
@@ -419,7 +449,10 @@ export default function Hung_Home({ navigation }) {
         <View style={styles.monthsale}>
           <View style={styles.box}>
             <Text style={styles.font1}>Sản phẩm bán chạy</Text>
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("DM_Catalog")}
+              style={{ flexDirection: "row", alignItems: "center" }}
+            >
               <Text style={{ color: "#003CBF" }}>Xem tất cả</Text>
               <AntDesign
                 name="right"
@@ -430,7 +463,7 @@ export default function Hung_Home({ navigation }) {
                   paddingLeft: 5,
                 }}
               />
-            </View>
+            </TouchableOpacity>
           </View>
           <View style={styles.listsp}>
             <FlatList
@@ -445,7 +478,9 @@ export default function Hung_Home({ navigation }) {
         <View style={styles.monthsale}>
           <View style={styles.box}>
             <Text style={styles.font1}>Thương hiệu nổi bật</Text>
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <TouchableOpacity
+              style={{ flexDirection: "row", alignItems: "center" }}
+            >
               <Text style={{ color: "#003CBF" }}>Xem tất cả</Text>
               <AntDesign
                 name="right"
@@ -456,7 +491,7 @@ export default function Hung_Home({ navigation }) {
                   paddingLeft: 5,
                 }}
               />
-            </View>
+            </TouchableOpacity>
           </View>
           <View style={styles.listsp}>
             <FlatList

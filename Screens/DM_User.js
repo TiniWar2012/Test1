@@ -265,4 +265,9 @@ const styles = StyleSheet.create({
     borderBottomColor: "#737373",
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
+  boxitem: {
+    flex: 3,
+    marginLeft: 5,
+    marginRight: 5,
+  },
 });
