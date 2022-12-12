@@ -34,12 +34,56 @@ import { Pressable } from "react-native";
 import { onPress } from "deprecated-react-native-prop-types/DeprecatedTextPropTypes";
 import { Modal } from "react-native-paper";
 // import BouncyCheckbox from "react-native-bouncy-checkbox";
-
+const listTab = [
+  {
+    status: "Chờ xác nhận",
+  },
+  {
+    status: "Đang xử lý",
+  },
+  {
+    status: "Đang giao",
+  },
+  {
+    status: "Hoàn thành",
+  },
+  {
+    status: "Hủy",
+  },
+];
 export default function Order() {
-  const [Id, setId] = useState(0);
-  const [modalVisible, setModalVisible] = useState(false);
+  const [status, setStatus] = useState("");
+  const [datalList, setDatalList] = useState(DATA);
+  const setStatusFilter = (status) => {
+    if (status !== "") {
+      setDatalList([...DATA.filter((e) => e.status === status)]);
+    } else {
+      setDatalList(DATA);
+    }
+    setStatus(status);
+  };
+  const renderItem = ({ item, index }) => {
+    return (
+      <View key={index} style={styles.Bill}>
+        <View style={styles.headerBill}>
+          <Text style={{ fontWeight: "bold", fontSize: 17 }}>
+            Mua tại nhà thuốc
+          </Text>
+          <View style={styles.pnlstt}>
+            <Text>{item.status}</Text>
+          </View>
+        </View>
+        {/*  */}
+        <View style={styles.MainBill}>
+          <Text>Điểm tích lũy: {item.point}</Text>
+          <Text>Mã đơn hàng: {item.id}</Text>
+          <Text>Giá trị đơn hàng {item.price}.000</Text>
+          <Text>Mua tại nhà thuốc: {item.address_Store}</Text>
+        </View>
+      </View>
+    );
+  };
 
-  const renderItem = ({ item }) => <Item {...item} />;
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar show />
@@ -58,32 +102,37 @@ export default function Order() {
       </View>
       <View style={styles.body}>
         {/* Status Invoice */}
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          <Pressable
-            style={styles.navSlideTop}
-            onPress={() => {
-              setId(1);
-              setModalVisible(true);
-            }}
-          >
-            <Text>Tất cả</Text>
-          </Pressable>
-          <TouchableOpacity style={styles.navSlideTop}>
-            <Text>Chờ xác nhận</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.navSlideTop} onPress={() => setId(3)}>
-            <Text>Đang xử lý</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.navSlideTop} onPress={() => setId(4)}>
-            <Text>Đang giao</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.navSlideTop} onPress={() => setId(5)}>
-            <Text>Đã giao thành công</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.navSlideTop} onPress={() => setId(6)}>
-            <Text>Đã hủy</Text>
-          </TouchableOpacity>
+        <ScrollView
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          style={styles.navSlide}
+        >
+          {listTab.map((e) => (
+            <TouchableOpacity
+              style={[
+                styles.navSlideTop,
+                status === e.status && styles.btnActive,
+              ]}
+              onPress={() => setStatusFilter(e.status)}
+            >
+              <Text
+                style={[
+                  styles.titleNav,
+                  status === e.status && styles.textActive,
+                ]}
+              >
+                {e.status}
+              </Text>
+            </TouchableOpacity>
+          ))}
         </ScrollView>
+        <View style={styles.main}>
+          <FlatList
+            data={datalList}
+            keyExtractor={(e, i) => i.toString()}
+            renderItem={renderItem}
+          />
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -94,22 +143,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
     flex: 1,
   },
-  body: {
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-    backgroundColor: "white",
-    display: "flex",
-    flexDirection: "column",
-    paddingLeft: 20,
-    paddingRight: 20,
-    flex: 1,
-  },
   header: {
     flexDirection: "row",
-    paddingTop: 20,
-    paddingBottom: 20,
-    paddingLeft: 20,
-    paddingRight: 20,
+    padding: 20,
     justifyContent: "space-between",
     backgroundColor: "#0F62F9",
   },
@@ -121,39 +157,41 @@ const styles = StyleSheet.create({
     fontSize: 19,
     fontWeight: "bold",
   },
+  body: {
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    backgroundColor: "white",
+    display: "flex",
+    flexDirection: "column",
+    flex: 1,
+  },
   navSlideTop: {
-    // padding: 10,
-    // borderBottomWidth: 2,
-    // borderColor: "#003CBF",
-    height: 40,
+    height: 50,
     justifyContent: "center",
-    marginRight: 20,
+    marginHorizontal: 15,
   },
-  allOrder: {
-    backgroundColor: "#ffffff",
+  titleNav: {
+    color: "#AAAAAA",
+    fontSize: 17,
   },
-  search: {
-    // display: "flex",
-    flexDirection: "row",
-    borderColor: "gray",
-    borderWidth: 1,
-    borderRadius: 12,
-    alignItems: "center",
-    alignContent: "center",
-    justifyContent: "space-evenly",
-    padding: 8,
-    marginTop: 10,
-  },
-  title: {
-    color: "black",
-    fontSize: 16,
-    fontWeight: "bold",
-    marginTop: 15,
-    marginLeft: 10,
-  },
+  btnActive: {
+    // padding: 10,
 
+    borderBottomWidth: 2,
+    borderColor: "#003CBF",
+  },
+  textActive: {
+    color: "#003CBF",
+  },
+  navSlide: {
+    flex: 1,
+  },
+  main: {
+    flex: 12,
+  },
   Bill: {
-    marginTop: 20,
+    marginTop: 10,
+    paddingHorizontal: 20,
   },
   headerBill: {
     backgroundColor: "#c4dbff",
@@ -187,52 +225,102 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
 });
-const Item = ({ status, point, id, price, address_Store }) => (
-  <View style={styles.Bill}>
-    <View style={styles.headerBill}>
-      <Text style={{ fontWeight: "bold", fontSize: 17 }}>
-        Mua tại nhà thuốc
-      </Text>
-      <View style={styles.pnlstt}>
-        <Text>Thành công</Text>
-      </View>
-    </View>
-    {/*  */}
-    <View style={styles.MainBill}>
-      <Text>Điểm tích lũy: {point}</Text>
-      <Text>Mã đơn hàng: {id}</Text>
-      <Text>Giá trị đơn hàng {price}</Text>
-      <Text>Mua tại nhà thuốc: {address_Store}</Text>
-    </View>
-  </View>
-);
+
 const DATA = [
   {
-    status: "1",
     point: "1",
     id: "1",
-    price: "1",
-    address_Store: "1",
+    price: "145",
+    address_Store:
+      "198 Phố Nguyễn Huy Tưởng, Phường Thanh Xuân Trung, Quận Thanh Xuân, Thành phố Hà Nội",
+    status: "Chờ xác nhận",
   },
   {
-    status: "12",
-    point: "12",
+    point: "120",
     id: "12",
-    price: "12",
-    address_Store: "12",
+    price: "129",
+    address_Store:
+      "198 Phố Nguyễn Huy Tưởng, Phường Thanh Xuân Trung, Quận Thanh Xuân, Thành phố Hà Nội",
+    status: "Chờ xác nhận",
   },
   {
-    status: "1ưeq2",
-    point: "1dsada2",
-    id: "1dsadsa2",
-    price: "1ádasdsa2",
-    address_Store: "1dsadas",
+    point: "100",
+    id: "1dsaddda2",
+    price: "245",
+    address_Store:
+      "198 Phố Nguyễn Huy Tưởng, Phường Thanh Xuân Trung, Quận Thanh Xuân, Thành phố Hà Nội",
+    status: "Đang xử lý",
   },
   {
-    status: "12ẻw",
-    point: "1rew2",
+    point: "100",
     id: "1rưer2",
-    price: "rưe2",
-    address_Store: "1rưe2",
+    price: "516",
+    address_Store:
+      "198 Phố Nguyễn Huy Tưởng, Phường Thanh Xuân Trung, Quận Thanh Xuân, Thành phố Hà Nội",
+    status: "Đang xử lý",
+  },
+  {
+    point: "100",
+    id: "1dsadsa2",
+    price: "357",
+    address_Store:
+      "198 Phố Nguyễn Huy Tưởng, Phường Thanh Xuân Trung, Quận Thanh Xuân, Thành phố Hà Nội",
+    status: "Đang xử lý",
+  },
+  {
+    point: "100",
+    id: "1rưe42342r2",
+    price: "864",
+    address_Store:
+      "198 Phố Nguyễn Huy Tưởng, Phường Thanh Xuân Trung, Quận Thanh Xuân, Thành phố Hà Nội",
+    status: "Đang xử lý",
+  },
+  {
+    point: "100",
+    id: "1dsads4234a2",
+    price: "110",
+    address_Store:
+      "198 Phố Nguyễn Huy Tưởng, Phường Thanh Xuân Trung, Quận Thanh Xuân, Thành phố Hà Nội",
+    status: "Đang xử lý",
+  },
+  {
+    point: "100",
+    id: "1rưe423423r2",
+    price: "78",
+    address_Store:
+      "198 Phố Nguyễn Huy Tưởng, Phường Thanh Xuân Trung, Quận Thanh Xuân, Thành phố Hà Nội",
+    status: "Đang xử lý",
+  },
+  {
+    point: "100",
+    id: "1rưe423423r2",
+    price: "78",
+    address_Store:
+      "198 Phố Nguyễn Huy Tưởng, Phường Thanh Xuân Trung, Quận Thanh Xuân, Thành phố Hà Nội",
+    status: "Đang xử lý",
+  },
+  {
+    point: "100",
+    id: "1123qwe12",
+    price: "786",
+    address_Store:
+      "198 Phố Nguyễn Huy Tưởng, Phường Thanh Xuân Trung, Quận Thanh Xuân, Thành phố Hà Nội",
+    status: "Đang giao",
+  },
+  {
+    point: "100",
+    id: "1rưe42r2",
+    price: "122",
+    address_Store:
+      "198 Phố Nguyễn Huy Tưởng, Phường Thanh Xuân Trung, Quận Thanh Xuân, Thành phố Hà Nội",
+    status: "Đang giao",
+  },
+  {
+    point: "100",
+    id: "ghsdg231",
+    price: "1024",
+    address_Store:
+      "198 Phố Nguyễn Huy Tưởng, Phường Thanh Xuân Trung, Quận Thanh Xuân, Thành phố Hà Nội",
+    status: "Hoàn thành",
   },
 ];
